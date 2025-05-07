@@ -4,12 +4,12 @@
   become: true
   tasks:
 
-  - name: Install apache2 package
+  - name: Remove apache2 package
     apt:
       name: apache2
       state: absent
 
-  - name: Add PHP support for apache
+  - name: Remove PHP support for apache
     apt:
       name: libapache2-mod-php
       state: absent
