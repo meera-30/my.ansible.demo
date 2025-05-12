@@ -7,41 +7,26 @@
   - name: Install updates (CentOS)
     tags: always
     dnf:
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "CentOS"
 
   - name: Install updates (Ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
 
 - hosts: all
   become: true
   tasks:
 
-  - name: Create Meera user
-    tags: always
-    user:
-      name: meera
-      groups: root
-
   - name: Add ssh key for meera
     tags: always
     authorized_key:
       user: meera
       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0gDt/0YN0E1TaSChv5RANtvuRPzspmQADDMuX5wqz+ ansible"
-
-  - name: Add sudoers file for meera
-    tags: always
-    copy:
-      src: sudoer_meera
-      dest: /etc/sudoers.d/meera
-      owner: root
-      group: root
-      mode: 0440
 
 
 - hosts: workstations
