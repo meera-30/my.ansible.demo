@@ -18,6 +18,16 @@
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Create Meera user
+    tags: always
+    user:
+      name: meera
+      groups: root
+
 - hosts: workstations
   become: true
   tasks:
