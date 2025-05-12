@@ -1,0 +1,5 @@
+- name: Add ssh key for meera
+  tags: always
+  authorized_key:
+    user: meera
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0gDt/0YN0E1TaSChv5RANtvuRPzspmQADDMuX5wqz+ ansible"
