@@ -28,6 +28,22 @@
       name: meera
       groups: root
 
+  - name: Add ssh key for meera
+    tags: 
+    authorized_key:
+      user: meera
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0gDt/0YN0E1TaSChv5RANtvuRPzspmQADDMuX5wqz+ ansible"
+
+  - name: Add sudoers file for meera
+    tags: always
+    copy:
+      src: sudoer_meera
+      dest: /etc/sudoers.d/meera
+      owner: root
+      group: root
+      mode: 0440
+
+
 - hosts: workstations
   become: true
   tasks:
